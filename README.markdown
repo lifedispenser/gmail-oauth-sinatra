@@ -12,6 +12,8 @@ gem install oauth
 
 gem install haml
 
+edit app.rb to put in the email address of the one you want to test (a dummy or throw-away account).
+
 ruby app.rb
 
 Last version of this code can be found at https://github.com/nfo/gmail-oauth-sinatra.
