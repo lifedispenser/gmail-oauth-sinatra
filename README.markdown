@@ -5,8 +5,11 @@ A fork of the sinatra project to test out the gmail gem with oauth: [gmail_xoaut
 how to use:
 
 gem install sinatra
+
 gem install gmail
+
 gem install oauth
+
 gem install haml
 
 ruby app.rb
