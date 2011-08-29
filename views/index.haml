@@ -1,8 +1,12 @@
 %html
-  %body
-    %h3 Authorized email address
-    %p= @email || ":("
-    %h3 Token
-    %p= @access_token.token
-    %h3 Secret
-    %p= @access_token.secret
+	%body
+		%h3 Authorized email address
+		%p= @email || ":("
+		%h3 Token
+		%p= @access_token.token
+		%h3 Secret
+		%p= @access_token.secret
+		- @inbox.each do |email|
+			%p=h email.in_reply_to
+			%p=h email.message_id
+			%p=h email.references

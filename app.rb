@@ -32,9 +32,14 @@ before do
   
 end
 
+helpers do
+  include Rack::Utils
+  alias_method :h, :escape_html
+end
+
 get "/" do
   if @access_token #if we have received an access token on our request (meaning we have authenticated)
-    gmail = Gmail.connect(:xoauth, "_a throw away user email here_", #use your personal one at your own risk
+    gmail = Gmail.connect(:xoauth, "email address here:", #use your personal one at your own risk
 			:token           => @access_token.token,
 			:secret          => @access_token.secret,
 			:consumer_key    => 'anonymous',
@@ -46,7 +51,7 @@ get "/" do
 		# After authentication, you can test out the functions you want to retrieve emails:
 		# look in mailbox.rb of def emails in the gmail gem to see the options available
 		
-		@inbox = gmail.inbox.emails # > an array of sequence numbers [1, 3, 5, 6, ..., #]
+		@inbox = gmail.inbox.emails(:search => "custom email text")
 		# gmail.inbox.emails(:search => "custom email").collect { |x| x.uid }
 		# gmail.inbox.emails(:to => "Me")
 		
